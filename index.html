@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="CSS/Styles.css">
+<link rel="stylesheet" href="CSS/normalize.css">
+<title>Weather Call</title>
+</head>
+<body>
+
+    <button class="btn" onclick=Refresh()>
+        <h1>Weather Now</h1>
+    </button>
+    <div class="container">
+        <div class="card">
+<div class="heading">
+    <h2 class="location-name">Loading</h2>
+    <p class="date">June 28</p>
+</div>
+<div class="temperature-section">
+    <div class="Temperature">
+        <canvas class="icon" width="128" height="128"></canvas>
+        <span class="location-temp"></span> <span class="temperature-unit"></span>
+    </div>
+    <div class="location-info">
+        <p class="description">not</p>
+        <p class="feels-like"></p>
+        <P class="observed-on">30/25</P>
+    </div>
+</div>
+        </div>
+
+        <div class="card card__clouds">
+           
+                <h3>Clouds</h3>
+                <h3 class="clouds"></h3>
+                <canvas class="icon__cloud"></canvas>
+    
+           
+
+            </div>
+
+            <div class="card card__humidity">
+            
+                <h3>Humidity</h3>
+                <h3 class="humidity"></h3>
+                <canvas class="icon__humidity"></canvas>
+    
+
+            </div>
+
+            <div class="card card__pressure">
+            
+                <h3>Pressure</h3>
+                <h3 class="pressure"></h3>
+                <canvas class="icon__pressure"></canvas>
+    
+            </div>
+            
+            <div class="card card__summary">
+
+                <div class="liner">
+                    <h3>Wind Speed</h3>
+                    <span class="summary-wind__speed"></span>
+                </div>
+
+                <div class="liner">
+                    <h3>Wind Direction</h3>
+                    <span class="summary-wind__direction"></span>
+                </div>
+
+                <div class="liner">
+                    <h3>Wind Degree</h3>
+                    <span class="summary-wind__degree"></span>
+                </div>
+
+                <div class="liner">
+                    <h3>UV Index</h3>
+                    <span class="summary-uv"></span>
+                </div>
+
+                <div class="liner">
+                    <h3>Visibility</h3>                    
+                    <span class="summary-visibility"></span>
+                </div>
+    
+        </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+   
+
+    <script src="app.js"></script>
+    <script src="skycons.js"></script>
+    <script>
+        function Refresh() {
+          window.parent.location = window.parent.location.href;
+        }
+      </script>
+</body>
+</html>
