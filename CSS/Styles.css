@@ -18,6 +18,10 @@ h1 {
   color: azure;
 }
 
+h2 {
+  font-size: 2rem;
+}
+
 h3 {
   font-size: 2rem;
 }
@@ -85,10 +89,13 @@ body {
 
 .location-name {
   margin-bottom: 0;
+  margin-top: 11px;
 }
 
 .date {
   margin-top: 10px;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 /* Temperature */
