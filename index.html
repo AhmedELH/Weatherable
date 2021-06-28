@@ -9,33 +9,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="CSS/Styles.css">
 <link rel="stylesheet" href="CSS/normalize.css">
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <title>Weather Call</title>
 </head>
 <body>
 
-    <button class="btn" onclick=Refresh()>
+    <button class="btn animate__animated animate__pulse" onclick=Refresh()>
         <h1>Weather Now</h1>
     </button>
-    <div class="container">
-        <div class="card">
+    <div class="container ">
+        <div class="card animate__animated animate__zoomInDown">
 <div class="heading">
-    <h2 class="location-name">Loading</h2>
-    <p class="date">June 28</p>
+    <h2 class="location-name">Loading..</h2>
+    <p class="date">Please enable location access in your browser.</p>
 </div>
 <div class="temperature-section">
-    <div class="Temperature">
+    <div class="temperature">
         <canvas class="icon" width="128" height="128"></canvas>
-        <span class="location-temp"></span> <span class="temperature-unit"></span>
+        <span class="location-temp"></span><span class="temperature-unit"></span>
     </div>
     <div class="location-info">
-        <p class="description">not</p>
+        <p class="description"></p>
         <p class="feels-like"></p>
-        <P class="observed-on">30/25</P>
+        <P class="observed-on"></P>
     </div>
 </div>
         </div>
 
-        <div class="card card__clouds">
+        <div class="card card__clouds" data-aos="flip-left">
            
                 <h3>Clouds</h3>
                 <h3 class="clouds"></h3>
@@ -45,7 +50,7 @@
 
             </div>
 
-            <div class="card card__humidity">
+            <div class="card card__humidity " data-aos="flip-right">
             
                 <h3>Humidity</h3>
                 <h3 class="humidity"></h3>
@@ -54,7 +59,7 @@
 
             </div>
 
-            <div class="card card__pressure">
+            <div class="card card__pressure" data-aos="flip-up">
             
                 <h3>Pressure</h3>
                 <h3 class="pressure"></h3>
@@ -62,7 +67,7 @@
     
             </div>
             
-            <div class="card card__summary">
+            <div class="card card__summary" data-aos="flip-down">
 
                 <div class="liner">
                     <h3>Wind Speed</h3>
@@ -109,6 +114,10 @@
 
     <script src="app.js"></script>
     <script src="skycons.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script>
         function Refresh() {
           window.parent.location = window.parent.location.href;

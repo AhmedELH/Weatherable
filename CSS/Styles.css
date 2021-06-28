@@ -1,5 +1,5 @@
 :root {
-    --color-primary: cyan;
+  --color-primary: cyan;
 }
 
 *,
@@ -11,215 +11,224 @@
 /* typography */
 
 body {
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-    color: azure;
+  color: azure;
 }
 
 h3 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 /* background */
 
- body {
-
-   
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-  }
-  
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
- /* Container */
-
- .container {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     margin-top: 50px;
- }
-
- /* Card */
-
- .card {
-
-    width: 93%;
-    background: rgba(25,25,112,0.5);
-    border-radius: 10px;
-    padding: 15px;
-    color: azure;
-    margin-top: 20px;
-    
-
- }
- 
-.card__clouds, .card__humidity, .card__pressure {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 40px;
-
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
- /* heading */
+/* Container */
 
- .location-name {
-     margin-bottom: 0;
- }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
 
- .date {
-     margin-top: 10px;
- }
+/* Card */
 
+.card {
+  width: 93%;
+  background: rgba(25, 25, 112, 0.5);
+  border-radius: 10px;
+  padding: 15px;
+  color: azure;
+  margin-top: 20px;
+}
 
- /* Temperature */
+.card:hover {
+  background-color: rgba(25, 25, 112, 0.8);
+}
 
- .temperature-section {
-     display: flex;
-     justify-content: space-between;
-     margin-top: 40px;
- }
+.card__clouds,
+.card__humidity,
+.card__pressure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
 
- .temperature {
-     display: flex;
-    
- }
+/* heading */
 
- .location-temp {
-     font-size: 3.5rem;
-     align-self: center;
-   
- }
+.location-name {
+  margin-bottom: 0;
+}
 
- .location-info {
-     font-size: .7rem;
-     line-height: 5px;
-     align-self: flex-start;
-     text-align: right;
-     width: 50%;
-     padding-top: 40px;
-     
-     
- 
- }
+.date {
+  margin-top: 10px;
+}
 
- .icon {
-     width: 45%;
-     padding-right: 10px;
- }
+/* Temperature */
 
- .icon__cloud, .icon__humidity, .icon__pressure {
-     width: 70%;
- }
- 
- /* Summary */
+.temperature-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
 
- .card__summary {
-    margin-bottom: 50px;
-    padding: 15px 25px 35px 25px;
-    
- }
+.location-temp {
+  font-size: 3.5rem;
+  align-self: center;
+}
 
- .liner {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
- }
+.temperature:hover {
+  color: #e73c7e;
+}
 
+.location-info {
+  font-size: 0.7rem;
+  line-height: 5px;
+  align-self: flex-start;
+  text-align: right;
+  width: 50%;
+  padding-top: 40px;
+}
 
-     
- .liner h3 {
+.icon {
+  width: 45%;
+  padding-right: 10px;
+}
 
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    
- }
+.icon__cloud,
+.icon__humidity,
+.icon__pressure {
+  width: 70%;
+}
 
+/* Summary */
 
- .liner span {
-     font-size: 1.2rem;
-     font-weight: 700;
- }
- 
- /* Button */
+.card__summary {
+  margin-bottom: 50px;
+  padding: 15px 25px 35px 25px;
+}
 
- .btn {
-     border: 0;
-     border-radius: 70px;
-     
-     background: linear-gradient(-45deg, #ee7752, #e73c7e, #635e9e);
-     margin-bottom: 20px;
-     box-shadow: 0 0 2px -2px #000;
-     cursor: pointer;
- }
+.liner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
 
- h1 {
-     padding: 0px 20px 0 20px;
-    
- }
+.liner h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
 
- @media screen and (min-width: 768px) {
+.liner span {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
 
-    .container {
-        display: grid;
-        grid-template-columns: 500px 300px 300px;
-        grid-template-rows: 300px 300px;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-        justify-items: center;
-        
-    }
+/* Button */
 
-    .card {
-        margin: 0;
-        height: 18rem;
-        padding-bottom: 0;
-        padding: 20px;
-    }
+.btn {
+  border: 0;
+  border-radius: 70px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #635e9e);
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042);
+  cursor: pointer;
+  margin-left: 30px;
+  margin-top: 30px;
+  width: 8rem;
+  height: 8rem;
+  animation: gradient 15s ease infinite;
+}
 
-    h3 {
-        font-size: 2rem;
-        margin: 0px;
-    }
+.btn:hover {
+  animation: none;
+  transform: scale(1.1);
+}
 
-    .icon__cloud, .icon__humidity, .icon__pressure {
-        width: 50%;
-    }
+h1 {
+  padding: 10px 17px 0 17px;
+}
 
-     .card__clouds, .card__pressure, .card__humidity {
-        
-         justify-content: space-around;
-     }
+@media screen and (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 500px 300px 300px;
+    grid-template-rows: 300px 300px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
 
-     .card__summary h3 {
-         font-size: 0.9rem;
-         padding-top: 11px;
-     }
+  .card {
+    margin: 0;
+    height: 18rem;
+    padding-bottom: 0;
+    padding: 20px;
+  }
 
-     .location-info {
+  .card:hover {
+    transform: scale(1.1);
+  }
 
-        padding-top: 80px;
-     }
+  .card__summary {
+    padding: 10px 30px 0 30px;
+  }
 
-   
- }
+  h3 {
+    font-size: 2rem;
+    margin: 0px;
+  }
+
+  .icon__cloud,
+  .icon__humidity,
+  .icon__pressure {
+    width: 50%;
+  }
+
+  .card__clouds,
+  .card__pressure,
+  .card__humidity {
+    justify-content: space-around;
+  }
+
+  .card__summary h3 {
+    font-size: 1rem;
+    padding-top: 2px;
+    margin-top: 9px;
+  }
+
+  .location-info {
+    padding-top: 80px;
+  }
+
+  .card__pressure {
+    grid-column: 2;
+  }
+}

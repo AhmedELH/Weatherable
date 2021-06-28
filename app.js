@@ -21,14 +21,15 @@ window.addEventListener('load', () => {
 
 
 
-    const myKey = "f7b98ef59cd376f4534d20bfbab6ce01";
+    const myKey = "ce59712064ebbdc8ac39591b07cae1a3";
+    const testkey = "708f548c38fb3ee89f3d709b983228d8";
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             lon = position.coords.longitude;
             lat = position.coords.latitude;
 
-            const api = `http://api.weatherstack.com/current?access_key=${myKey}&query=${lat},${lon}`
+            const api = `http://api.weatherstack.com/current?access_key=${testkey}&query=${lat},${lon}`
 
             fetch(api)
                 .then(Response => {
