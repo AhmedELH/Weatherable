@@ -64,6 +64,8 @@ window.addEventListener('load', () => {
 
                     let icon = weather_code;
 
+                   
+
 
 
                     setIcons(icon, document.querySelector('.icon'));
