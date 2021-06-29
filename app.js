@@ -1,141 +1,155 @@
 window.addEventListener('load', () => {
-    let lon;
+    let long;
     let lat;
-    const locationRegion = document.querySelector('.location-name');
-    const dateTime = document.querySelector('.date');
-    const locationTemp = document.querySelector('.location-temp');
-    let weatherDesc = document.querySelector('.description');
-    const feelsLikeTemp = document.querySelector('.feels-like');
-    const observedOn = document.querySelector('.observed-on');
-    const clouds = document.querySelector('.clouds');
+    let temperatureDescription = document.querySelector('.description');
+    let temperatureDegree = document.querySelector('.location-temp');
+    let locationTimezone = document.querySelector('.date');
+    let temperatureSection = document.querySelector('.temperature-section');
+    const temperatureSpan = document.querySelector('.temperature-unit');
+    const cloudsVisible = document.querySelector('.clouds');
     const humidityLevel = document.querySelector('.humidity');
     const pressureLevel = document.querySelector('.pressure');
-    const temperatureSection = document.querySelector('.temperature-section');
-    const temperatureUnit = document.querySelector('.temperature-unit');
+    let locationSpecific = document.querySelector('.location-name');
     const uvIndex = document.querySelector('.summary-uv');
     const visibilityLevel = document.querySelector('.summary-visibility');
     const windDegree = document.querySelector('.summary-wind__degree');
     const windDir = document.querySelector('.summary-wind__direction');
     const windSpeed = document.querySelector('.summary-wind__speed');
+    const feelsLike = document.querySelector('.feels-like');
+    const locationTime = document.querySelector('.location-time');
+    const maxDeg = document.querySelector('.summary-temperature__max');
+    
 
 
-
-
-    const myKey = "ce59712064ebbdc8ac39591b07cae1a3";
-    const testkey = "708f548c38fb3ee89f3d709b983228d8";
+    const myKey = "9fd7e84f84626f28199be3bc384da8f9"
 
     if (navigator.geolocation) {
+
         navigator.geolocation.getCurrentPosition(position => {
-            lon = position.coords.longitude;
+            long = position.coords.longitude;
             lat = position.coords.latitude;
 
-            const api = `https://api.weatherstack.com/current?access_key=${myKey}&query=${lat},${lon}`;
+            const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=${myKey}`;
+            const apix = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=${myKey}`;
+
 
             fetch(api)
-                .then(Response => {
-                    return Response.json();
+                .then(response => {
+                    return response.json();
                 })
-
                 .then(data => {
+
                     
 
-                    const { country, localtime, name, region } = data.location;
-                    const { temperature, feelslike, observation_time, cloudcover, humidity, pressure, weather_code } = data.current;
-                    const { uv_index, visibility, wind_degree, wind_dir, wind_speed } = data.current;
-                    const weather_descriptions = data.current.weather_descriptions[0];
 
 
-
-
-                    locationRegion.textContent = region;
-                    dateTime.textContent = localtime;
-                    locationTemp.textContent = temperature + "\u00B0";
-                    weatherDesc.textContent = weather_descriptions;
-                    feelsLikeTemp.textContent = "Feels like: " + feelslike + "\u00B0";
-                    observedOn.textContent = "Observed on: " + observation_time;
-                    clouds.textContent = cloudcover + "%";
-                    humidityLevel.textContent = humidity + "%";
+                    const { temp, clouds, humidity, pressure, feels_like, wind_speed, wind_deg, uvi, dt, visibility } = data.current;
+                    const { description, icon } = data.current.weather[0];
+                    const { max } = data.daily[0].temp;
+                    
+ 
+                    //Set DOM elements
+                    temperatureDegree.textContent = Math.floor(temp);
+                    temperatureDescription.textContent = capitalizeFirstLetter(description);
+                    locationTimezone.textContent = data.timezone;
+                    cloudsVisible.textContent = clouds + "%";
+                    humidityLevel.textContent = humidity;
                     pressureLevel.textContent = pressure;
-                    uvIndex.textContent = uv_index;
-                    visibilityLevel.textContent = visibility;
-                    windDegree.textContent = wind_degree + "\u00B0";
-                    windDir.textContent = wind_dir;
-                    windSpeed.textContent = wind_speed + " km/h";
+                    windSpeed.textContent = wind_speed + " Km/h";
+                    windDegree.textContent = wind_deg + "°";
+                    uvIndex.textContent = uvi;
+                    feelsLike.textContent = "Feels like " + feels_like + "°";
+                    maxDeg.textContent = Math.floor(max) + "°";
+                   locationTime.textContent = timeConverter(dt);
+                   visibilityLevel.textContent = visibility;
+                    
 
-                    let icon = weather_code;
-
-                   
-
-
-
+                    //Set icon
                     setIcons(icon, document.querySelector('.icon'));
-                    setIcons("122", document.querySelector('.icon__cloud'));
-                    setIcons("143", document.querySelector('.icon__pressure'));
-                    setIcons("263", document.querySelector('.icon__humidity'));
+                    setIcons("03d", document.querySelector('.icon__cloud'));
+                    setIcons("50d", document.querySelector('.icon__pressure'));
+                    setIcons("09d", document.querySelector('.icon__humidity'));
+
+
+
 
                     //Celsius to Farenheit
 
-                    let Farenheit = (temperature * 9 / 5) + 32;
-                    let celsius = temperature;
+                    let Farenheit = (temp * 9 / 5) + 32;
 
                     //Switch between Celsius/Farenheit
                     temperatureSection.addEventListener('click', () => {
-                        if (temperatureUnit.textContent === "°C") {
-                            temperatureUnit.textContent = "°F";
-                            locationTemp.textContent = Math.floor(Farenheit);
+                        if (temperatureSpan.textContent === "°C") {
+                            temperatureSpan.textContent = "°F";
+                            temperatureDegree.textContent = Math.floor(Farenheit);
                         } else {
-                            temperatureUnit.textContent = "°C";
-                            locationTemp.textContent = temperature;
+                            temperatureSpan.textContent = "°C";
+                            temperatureDegree.textContent = Math.floor(temp);
 
                         }
 
                     });
 
 
+                });
 
-
+            fetch(apix)
+                .then(response => {
+                    return response.json();
                 })
+                .then(datax => {
 
-
+                    locationSpecific.textContent = datax.name;
+                })
         });
+
     }
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+      
+      console.log(capitalizeFirstLetter('foo')); // Foo
+
+    function timeConverter(UNIX_timestamp){
+        var a = new Date(UNIX_timestamp * 1000);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min  ;
+        return time;
+      }
 
     function setIcons(icon, iconID) {
         const skycons = new Skycons({ color: "white" });
         let checkIcon = icon;
         let currentIcon;
 
-        if (checkIcon == "113") {
+        if ((checkIcon == "01d") || (checkIcon == "01n")) {
             currentIcon = "CLEAR_DAY";
-        } else if (checkIcon == "116") {
+        } else if ((checkIcon == "02d") || (checkIcon == "02n")) {
             currentIcon = "PARTLY_CLOUDY_DAY";
-        } else if (checkIcon == "119") {
+        } else if ((checkIcon == "03d") || (checkIcon == "03n")) {
             currentIcon = "CLOUDY";
-        } else if (checkIcon == "122") {
+        } else if ((checkIcon == "04d") || (checkIcon == "04n")) {
             currentIcon = "CLOUDY";
-        } else if ((checkIcon == "176") || (checkIcon == "263") || (checkIcon == "266") || (checkIcon == "293") || (checkIcon == "296") || (checkIcon == "299")) {
+        } else if (checkIcon == "09d") {
             currentIcon = "RAIN";
-        } else if ((checkIcon == "185") || (checkIcon == "302") || (checkIcon == "305") || (checkIcon == "308") || (checkIcon == "311")) {
+        } else if (checkIcon == "10d") {
             currentIcon = "RAIN";
-        } else if (checkIcon == "200") {
-            currentIcon = "RAIN";
-        } else if (checkIcon == "182") {
+        } else if (checkIcon == "11d") {
             currentIcon = "SLEET";
-        } else if ((checkIcon == "179") || (checkIcon == "281") || (checkIcon == "284")) {
+        } else if (checkIcon == "13d") {
             currentIcon = "SNOW";
-        } else if (checkIcon == "227") {
-            currentIcon = "SNOW";
-        } else if (checkIcon == "230") {
-            currentIcon = "SNOW";
-        } else if (checkIcon == "143") {
-            currentIcon = "FOG";
-        } else if (checkIcon == "248") {
-            currentIcon = "FOG";
-        } else if (checkIcon == "260") {
+        } else if (checkIcon == "50d") {
             currentIcon = "FOG";
         }
         skycons.play();
         return skycons.set(iconID, Skycons[currentIcon]);
+
 
 
     }

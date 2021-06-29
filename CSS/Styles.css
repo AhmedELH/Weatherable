@@ -92,10 +92,10 @@ body {
   margin-top: 11px;
 }
 
-.date {
-  margin-top: 10px;
+.location-time {
   font-weight: 600;
-  font-size: 1rem;
+  margin-right: 5px;
+  margin-top: 0;
 }
 
 /* Temperature */
@@ -125,7 +125,7 @@ body {
 
 .description,
 .feels-like,
-.observed-on {
+.max-temp {
   margin: 6px;
   font-weight: 600;
 }
@@ -145,7 +145,7 @@ body {
 
 .card__summary {
   margin-bottom: 50px;
-  padding: 15px 25px 35px 25px;
+  padding: 30px 25px 35px 25px;
 }
 
 .liner {
@@ -153,11 +153,12 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  margin-top: 3px;
 }
 
 .liner h3 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  margin-bottom: 15px;
 }
 
 .liner span {
@@ -256,7 +257,7 @@ h1 {
 
   .description,
   .feels-like,
-  .observed-on {
+  .max-temp {
     margin: 5px;
   }
 
