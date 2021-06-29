@@ -1,4 +1,3 @@
-FROM httpd:2.4
-COPY . /usr/local/apache2/htdocs/
-COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
 EXPOSE 8080
