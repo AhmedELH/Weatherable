@@ -29,7 +29,7 @@ window.addEventListener('load', () => {
             lon = position.coords.longitude;
             lat = position.coords.latitude;
 
-            const api = `http://api.weatherstack.com/current?access_key=${myKey}&query=${lat},${lon}`;
+            const api = `https://api.weatherstack.com/current?access_key=${myKey}&query=${lat},${lon}`;
 
             fetch(api)
                 .then(Response => {
